@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <algorithm>
 
-
 template <typename Type>
 class ArrayPtr {
 public:
@@ -13,7 +12,7 @@ public:
     // Если size == 0, поле raw_ptr_ должно быть равно nullptr
     explicit ArrayPtr(size_t size) {
         if(size != 0){
-        raw_ptr_ = new Type[size];
+            raw_ptr_ = new Type[size];
         }
     }
 
@@ -21,7 +20,7 @@ public:
     explicit ArrayPtr(Type* raw_ptr) noexcept {
         raw_ptr_ = raw_ptr;
     }
-    
+
     // Запрещаем копирование
     ArrayPtr(const ArrayPtr&) = delete;
 
@@ -35,8 +34,6 @@ public:
 
     ArrayPtr(ArrayPtr&&) = default;
     ArrayPtr& operator=(ArrayPtr&&) = default;
-    
-    
     // Прекращает владением массивом в памяти, возвращает значение адреса массива
     // После вызова метода указатель на массив должен обнулиться
     [[nodiscard]] Type* Release() noexcept {

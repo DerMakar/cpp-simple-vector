@@ -60,9 +60,8 @@ void TestNamedMoveConstructor() {
     cout << "Test with named object, move constructor" << endl;
     SimpleVector<int> vector_to_move(GenerateVector(size));
     assert(vector_to_move.GetSize() == size);
-    cout << "step 1 is done"s << endl;
+
     SimpleVector<int> moved_vector(move(vector_to_move));
-    cout << "step 2 is done"s << endl;
     assert(moved_vector.GetSize() == size);
     assert(vector_to_move.GetSize() == 0);
     cout << "Done!" << endl << endl;
@@ -73,8 +72,9 @@ void TestNamedMoveOperator() {
     cout << "Test with named object, operator=" << endl;
     SimpleVector<int> vector_to_move(GenerateVector(size));
     assert(vector_to_move.GetSize() == size);
-
+cout << "done1" << endl;
     SimpleVector<int> moved_vector = move(vector_to_move);
+  cout << "done2" << endl;
     assert(moved_vector.GetSize() == size);
     assert(vector_to_move.GetSize() == 0);
     cout << "Done!" << endl << endl;
@@ -150,7 +150,6 @@ void TestNoncopiableErase() {
     cout << "Done!" << endl << endl;
 }
 
-
 int main() {
     TestTemporaryObjConstructor();
     TestTemporaryObjOperator();
@@ -160,6 +159,5 @@ int main() {
     TestNoncopiablePushBack();
     TestNoncopiableInsert();
     TestNoncopiableErase();
-    cout << "ALL IS DONE!"s << endl;
     return 0;
 }
